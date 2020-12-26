@@ -18,18 +18,18 @@ sudo mkdir --parents /etc/consul-template.d
 sudo mkdir --parents /opt/consul-template
 sudo useradd --system --home /etc/consul-template.d --shell /bin/false consul-template
 sudo chown --recursive consul-template:consul-template /opt/consul-template /etc/consul-template.d
-sudo cp /home/pi/hashipi-config/consul-template/consul-template.hcl /etc/consul-template.d/
+sudo cp ./consul-template/consul-template.hcl /etc/consul-template.d/
 sudo chmod 640 /etc/consul-template.d/consul-template.hcl
 
 echo "downloading consul-template and moving to /usr/local/bin/"
-sudo bash /home/pi/hashipi-config/consul-template/scripts/get-consul-template $1 $2
+sudo bash ./consul-template/scripts/get-consul-template $1 $2
 
 echo "setting up consul-template autocomplete"
 consul-template -autocomplete-install
 complete -C /usr/local/sbin/consul-template consul-template
 
 echo "starting consul-template"
-sudo cp /home/pi/hashipi-config/consul-template/consul-template.service /etc/systemd/system/
+sudo cp ./consul-template/consul-template.service /etc/systemd/system/
 sudo systemctl enable consul-template
 sudo systemctl start consul-template
 sudo systemctl status consul-template

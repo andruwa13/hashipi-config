@@ -1,0 +1,8 @@
+sudo apt-get update && sudo apt-get install -y golang unzip curl wget net-tools
+sudo apt update && sudo apt -y upgrade && sudo apt -y dist-upgrade
+
+cp ./bash_aliases /home/pi/.bash_aliases
+
+bash ./consul/scripts/service-init
+bash ./nomad/scripts/service-init
+bash ./vault/scripts/service-init
